@@ -1,25 +1,23 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import AuthView from './Views/AuthView/AuthView';
+import CardDetailView from './Views/CardDetailView/CardDetailView';
+import HomeView from './Views/HomeView/HomeView';
+import NewCardView from './Views/NewCardView/NewCardView';
+import UserView from './Views/UserView/UserView';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path='/' element={<HomeView />} />
+      <Route path='/register' element={<AuthView/>}/>
+      <Route path='/login' element={<AuthView />} />
+      <Route path='/user' element={<UserView />} />
+      <Route path='/addcard' element={<NewCardView />} />
+      <Route path='/detailcard' element={<CardDetailView />} />
+    </Routes>
   );
 }
 
