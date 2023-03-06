@@ -1,4 +1,3 @@
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
@@ -8,7 +7,7 @@ import HomeView from './Views/HomeView/HomeView';
 import NewCardView from './Views/NewCardView/NewCardView';
 import UserView from './Views/UserView/UserView';
 
-function App() {
+const App = () => {
   return (
     <Routes>
       <Route path='/' element={<HomeView />} />
