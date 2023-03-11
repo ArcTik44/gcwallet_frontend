@@ -3,7 +3,9 @@ import Header from "../../Components/Header/Header";
 
 const HomeView = () =>{
     return(<>
+    <div onClick={()=>{window.location.href='user'}}>
     <Header username={"C4SKET"}/>
+    </div>
     <div style={{
         backgroundColor:'#D9D9D9',
         borderRadius:11
