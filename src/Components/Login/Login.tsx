@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import '../Login/styles';
 import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
+import { Button, FormGroup } from "@mui/material";
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 
 const Login = () =>{
@@ -29,11 +28,16 @@ const Login = () =>{
         <>
         <div className="login_page">
         <AccountBalanceWalletIcon/>
-        <div className="login_form">
-            <TextField id="email" label="Email" variant="outlined" onChange={handleChange} value={email}/>
-            <TextField id="password" label="Password" variant="outlined" onChange={handleChange} value ={password}/>
+        <h1>GCWallet</h1>
+        <FormGroup>
+            <TextField name="email" label="Email" variant="outlined" onChange={handleChange} value={email}/>
+            <TextField name="password" label="Password" variant="outlined" onChange={handleChange} value ={password}/>
             <Button className="login_button" onClick={handleSubmit}>Login</Button>
-        </div>
+            <div style={{
+                backgroundColor:'white',
+                cursor:'pointer'
+            }} onClick={()=>{window.location.href='/register'}}>No account yet?</div>
+        </FormGroup>
         </div>
         </>
     );
