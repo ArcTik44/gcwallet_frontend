@@ -30,8 +30,8 @@ const Login = () =>{
         <AccountBalanceWalletIcon/>
         <h1>GCWallet</h1>
         <FormGroup>
-            <TextField name="email" label="Email" variant="outlined" onChange={handleChange} value={email}/>
-            <TextField name="password" label="Password" variant="outlined" onChange={handleChange} value ={password}/>
+            <TextField name="email" label="Email" variant="outlined" onChange={handleChange} value={email} type="email"/>
+            <TextField name="password" label="Password" variant="outlined" onChange={handleChange} value ={password} type='password'/>
             <Button className="login_button" onClick={handleSubmit}>Login</Button>
             <div style={{
                 backgroundColor:'white',

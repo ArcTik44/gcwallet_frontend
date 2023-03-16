@@ -1,7 +1,6 @@
 import React from "react";
 import {Avatar} from '@mui/material'
 
-
 interface LayoutProps {
     username: string
 }
@@ -32,7 +31,7 @@ const Header:React.FC<LayoutProps> = ({username}) =>{
           sx: {
             bgcolor: stringToColor(name),
           },
-          children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+          children: `${name.split(' ')[0][0]}`,
         };
       }
 
@@ -44,7 +43,7 @@ const Header:React.FC<LayoutProps> = ({username}) =>{
         }}
         className="container" onClick={()=>{window.location.href='/user'}}>
         <div><Avatar {...stringAvatar(username)}/></div>
-            <div>{username}</div>
+            <div><h1>{username}</h1></div>
         </div>
     </>)
 }

@@ -1,7 +1,11 @@
+import React from "react";
+import { Navigate } from "react-router-dom";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
+import { IUser } from "../../Services/auth";
 
 const HomeView = () =>{
+    
     return(<>
     <div onClick={()=>{window.location.href='user'}}>
     <Header username={"C4SKET"}/>

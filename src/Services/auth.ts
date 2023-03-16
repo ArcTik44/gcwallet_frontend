@@ -16,3 +16,9 @@ export interface RegisterCred{
     email:string;
     password:string;
 }
+
+export interface UpdateCred{
+    username:string;
+    email:string;
+    password:string;
+}
