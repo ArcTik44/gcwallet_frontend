@@ -32,7 +32,7 @@ const getUserById = async (userId:string):Promise<IUser|null> =>{
     return data as IUser;
 }
 
-const getAllGyms =async ():Promise<[IGym]|null> => {
+const getAllGyms =async ():Promise<IGym[]|null> => {
     const {data} = await instance.get(`/api/gyms`);
     return data;
 }
@@ -45,4 +45,14 @@ const getGymById = async (gymId:string):Promise<IGym|null> =>{
 const getCardById = async (cardId:string):Promise<ICard|null> =>{
     const {data} = await instance.get(`/api/cards/${cardId}`);
     return data as ICard;
+}
+
+export{
+    userSingUp,
+    userSignIn,
+    userUpdate,
+    getUserById,
+    getAllGyms,
+    getGymById,
+    getCardById
 }

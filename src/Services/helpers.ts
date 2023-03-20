@@ -11,3 +11,9 @@ export interface IGym{
     email:string;
     name:string;
 }
+
+export interface NewCardAdd{
+    _id:string;
+    barcode:string;
+    user_id:string;
+}

@@ -1,6 +1,8 @@
-const CardDetailView = ()=>{
+import CardDetail from "../../Components/CardList/CardDetail";
+
+const CardDetailView = () =>{
     return(
-        <div>CardViewDetail</div>
+        <CardDetail card_id={""}/>
     )
 }
 

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import { Button, Checkbox, FormControlLabel, FormGroup, TextField } from "@mui/material";
+import { userSingUp } from "../../Services/api-services";
+import { UserContext, useUserContext } from "../../Services/UserContext";
 const Register = () =>{
-    
+    const {user,userLogin} = useUserContext();
+
     const [email,setEmail] = useState<string>('');
     const [password,setPassword] = useState<string>('');
     const [confirmPassword,setConfirmPassword] = useState<string>('');
@@ -30,14 +33,36 @@ const Register = () =>{
         }
     }
 
-    const createAccount = () =>{
-        
+    const createAccount = (evt:React.FormEvent<HTMLElement>) =>{
+        evt.preventDefault();
+        if(confirmPassword === password&&tosAccepted===true){
+           const res = userSingUp({
+                username: username,
+                email: email,
+                password: password
+            });
+            
+            if(res==null){
+                console.log(res);
+            }
+            else{
+                userLogin()
+                console.log(res);
+            }
+        }  
     }
 
     return(
         <FormGroup>
+        <div className="logo-container" style={{
+            display:'flex',
+            justifyContent:'center',
+        }}>
         <AccountBalanceWalletIcon/>
-        <h1>GCWallet</h1>
+        </div>
+        <div className="logo-text" style={{}}>
+        <h1 style={{fontFamily:'sans-serif'}}>GCWallet</h1>
+        </div>
         <TextField name="username" variant="outlined" helperText='This will be displayed on your page' label="Username" value={username}
         onChange={handleChange} type="text" />
         <TextField onChange={handleChange} name="email" variant="outlined" label="Email" value={email} type="email" />

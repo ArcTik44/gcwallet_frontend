@@ -1,12 +1,13 @@
 import { Button, FormGroup, TextField } from "@mui/material";
 import { useState } from "react";
+import { UpdateCred } from "../../Services/auth";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
 const UserSettings = () =>{
 
-    const[username,setUsername] = useState<string>("");
-    const[email,setEmail] = useState<string>("")
+    const[username,setUsername] = useState<string|null>(null);
+    const[email,setEmail] = useState<string|null>(null)
     const[password,setPassword] = useState<string>("");
     const[confirmPassword,setConfirmPassword] = useState<string>(""); 
     const[image,setImage] = useState();
@@ -30,7 +31,11 @@ const UserSettings = () =>{
     }
 
     const updateDetails = () =>{
-
+        const updated:UpdateCred = {
+            username: null,
+            email: null,
+            password: null
+        }
     }
 
     const cancelUpdate = () =>{

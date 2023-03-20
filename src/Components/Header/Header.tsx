@@ -39,11 +39,15 @@ const Header:React.FC<LayoutProps> = ({username}) =>{
         <div
         style={{
             backgroundColor:'#D9D9D9',
-            borderRadius:12
+            borderRadius:12,
+            display:'flex',
+            alignItems:'center',
+            maxWidth:300,
+            alignContent:'center'
         }}
         className="container" onClick={()=>{window.location.href='/user'}}>
-        <div><Avatar {...stringAvatar(username)}/></div>
-            <div><h1>{username}</h1></div>
+            <div style={{display:'inline-block',paddingLeft:20}}><Avatar {...stringAvatar(username)}/></div>
+            <div style={{display:'inline-block',paddingLeft:50}}><h1>{username}</h1></div>
         </div>
     </>)
 }
