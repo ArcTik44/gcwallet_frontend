@@ -2,10 +2,11 @@ import { useState } from "react";
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import { Button, Checkbox, FormControlLabel, FormGroup, TextField } from "@mui/material";
 import { userSingUp } from "../../Services/api-services";
-import { UserContext, useUserContext } from "../../Services/UserContext";
+import { useUserContext } from "../../Services/UserContext";
+import { useNavigate } from "react-router-dom";
 const Register = () =>{
-    const {user,userLogin} = useUserContext();
-
+    const navigate = useNavigate();
+    const {userLogin} = useUserContext();
     const [email,setEmail] = useState<string>('');
     const [password,setPassword] = useState<string>('');
     const [confirmPassword,setConfirmPassword] = useState<string>('');
@@ -33,20 +34,21 @@ const Register = () =>{
         }
     }
 
-    const createAccount = (evt:React.FormEvent<HTMLElement>) =>{
+    const createAccount = async(evt:React.FormEvent<HTMLElement>) =>{
         evt.preventDefault();
         if(confirmPassword === password&&tosAccepted===true){
-           const res = userSingUp({
+           const res = await userSingUp({
                 username: username,
                 email: email,
                 password: password
             });
             
-            if(res==null){
+            if(res!=null){
+                userLogin(res);
                 console.log(res);
+                navigate('/');
             }
             else{
-                userLogin()
                 console.log(res);
             }
         }  
@@ -75,7 +77,6 @@ const Register = () =>{
                 cursor:'pointer'
             }}
         onClick={()=>{window.location.href='/login'}}>Already have account?</div>
-        </FormGroup>
-    )
+        </FormGroup>)
 }
 export default Register;

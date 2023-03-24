@@ -1,11 +1,13 @@
-import React from "react";
-import { IGym } from "../../Services/helpers";
+import React, { useState } from "react";
+import { ICard} from "../../Services/helpers";
 
 interface LayoutProps {
-    gyms:IGym[]
+    cards:string[]|undefined;
 }
 
 const CardList:React.FC<LayoutProps> = () =>{
+    const[cards,setCards] = useState<ICard[]>([]);
+
 
     return (<div style={{
         backgroundColor:'#D9D9D9',
@@ -13,6 +15,6 @@ const CardList:React.FC<LayoutProps> = () =>{
         overflow:'scroll'
     }}>
 
-    </div>)
+    </div>);
 }
 export default CardList;

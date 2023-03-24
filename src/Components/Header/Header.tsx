@@ -2,10 +2,13 @@ import React from "react";
 import {Avatar} from '@mui/material'
 
 interface LayoutProps {
-    username: string
+    username: string|undefined;
 }
 
 const Header:React.FC<LayoutProps> = ({username}) =>{
+    if(username==undefined){
+      username = "User"
+    }
     function stringToColor(string: string) {
         let hash = 0;
         let i;

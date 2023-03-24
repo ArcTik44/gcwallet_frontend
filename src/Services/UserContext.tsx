@@ -1,36 +1,34 @@
 import { createContext, useContext, useState } from "react";
 import { IUser } from "./auth";
 
-let user:IUser ={
-    _id: "",
-    username: "",
-    email: "",
-    password: "",
-    cards: []
-};
+interface ContextProps{
+    isLogged: boolean;
+    user: IUser|null;
+    userLogin:(data:IUser)=>void;
+    userLogout:()=>void;
+}
 
-export const UserContext = createContext({
-    isLogged: false,
-    user,
-    userLogin: () => {},
-    userLogout: () => {},
-})
+
+export const UserContext = createContext<ContextProps>({} as ContextProps);
 
 export const UserContextProvider = (props: any) => {
     const [isLogged, setIsLogged] = useState(false);
-    
-    const userLogin = () => {
+    const[user,setUser] = useState<IUser|null>(null);
+
+    const userLogin = (data:IUser) => {
+        setUser(data);
         setIsLogged(true);  
     }
 
     const userLogout = () => {
+        setUser(null);
         setIsLogged(false);
     }
 
     return <>
         <UserContext.Provider value={{
             isLogged: isLogged,
-            user,
+            user:user,
             userLogin,
             userLogout
         }}>

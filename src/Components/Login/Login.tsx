@@ -5,28 +5,30 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import { userSignIn } from "../../Services/api-services";
 import { UserContext } from "../../Services/UserContext";
 import { LoginCred } from "../../Services/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () =>{
-    const {user,userLogin} = useContext(UserContext);
-
+    const {userLogin} = useContext(UserContext);
+    const navigate = useNavigate();
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
 
-    const handleSubmit = (evt:React.FormEvent<HTMLElement>) =>{
+    const handleSubmit = async(evt:React.FormEvent<HTMLElement>) =>{
         evt.preventDefault();
-        const login: LoginCred ={
-            email: email,
+        const login ={
+            email: email.trim(),
             password: password
         };
         
-        const res = userSignIn(login);
-        if(res==null){
+        let res = await userSignIn(login);
+        
+        if(res!=null){
             console.log(res);
+            userLogin(res);
+            navigate('/');
         }
         else{
-            console.log(res);
-            userLogin();
-            window.location.href="/";
+            console.log(666);
         }
     }
     

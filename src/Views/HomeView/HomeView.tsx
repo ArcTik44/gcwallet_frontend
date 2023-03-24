@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import CardList from "../../Components/CardList/CardList";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import { IUser } from "../../Services/auth";
+import { UserContext } from "../../Services/UserContext";
 
 const HomeView = () =>{
     
+    const {user} = useContext(UserContext);
+
     return(<>
     <div onClick={()=>{window.location.href='user'}}>
-    <Header username={"C4SKET"}/>
+    <Header username={user?.username}/>
     </div>
     <div style={{
         backgroundColor:'#D9D9D9',
@@ -21,7 +24,7 @@ const HomeView = () =>{
              borderColor:'#000',
         }}><h1>My cards</h1></div>
         <div>
-            <CardList gyms={[]}/>
+            <CardList cards={user?.cards}/>
         </div>
         
         </div>

@@ -13,7 +13,7 @@ instance.defaults.headers.put['Content-Type'] = 'application/json';
 instance.defaults.headers.put['Accept'] = 'application/json';
 
 const userSignIn = async (user:LoginCred):Promise<IUser |null>=>{
-    const {data} = await instance.post(`/api/users/signin`,{...user});
+    const {data} = await instance.post(`/api/users/signin`,{...user},{timeout:10000});
     return data as IUser;
 }
 
