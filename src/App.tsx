@@ -11,7 +11,7 @@ import { UserContext } from './Services/UserContext';
 
 const App = () => {
 
-    const {isLogged} = useContext(UserContext);
+  const {isLogged} = useContext(UserContext);
   return (
     <Routes>
       <Route path='/' element={isLogged ? <HomeView/>:<Navigate to='/login'/>} />

@@ -1,12 +1,16 @@
 import React from "react";
 import {Avatar} from '@mui/material'
+import { useNavigate } from "react-router-dom";
 
 interface LayoutProps {
     username: string|undefined;
 }
 
 const Header:React.FC<LayoutProps> = ({username}) =>{
-    if(username==undefined){
+
+  const navigate = useNavigate();
+
+    if(username===undefined){
       username = "User"
     }
     function stringToColor(string: string) {
@@ -48,7 +52,7 @@ const Header:React.FC<LayoutProps> = ({username}) =>{
             maxWidth:300,
             alignContent:'center'
         }}
-        className="container" onClick={()=>{window.location.href='/user'}}>
+        className="container" onClick={()=>{navigate('/user')}}>
             <div style={{display:'inline-block',paddingLeft:20}}><Avatar {...stringAvatar(username)}/></div>
             <div style={{display:'inline-block',paddingLeft:50}}><h1>{username}</h1></div>
         </div>

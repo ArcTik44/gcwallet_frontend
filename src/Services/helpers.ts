@@ -13,7 +13,7 @@ export interface IGym{
 }
 
 export interface NewCardAdd{
-    _id:string;
+    gym_id:string;
     barcode:string;
     user_id:string;
 }

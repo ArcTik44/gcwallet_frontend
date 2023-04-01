@@ -1,9 +1,9 @@
-import AddCardIcon from '@mui/icons-material/AddCard';
-import SettingsIcon from '@mui/icons-material/Settings';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import AddCardIcon from '@mui/icons-material/AddCard';
 import CancelIcon from '@mui/icons-material/Cancel';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import HomeIcon from '@mui/icons-material/Home';
+import SettingsIcon from '@mui/icons-material/Settings';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const Footer:React.FC = () =>{
     const navigate = useNavigate();
     const location = useLocation();
 
-    if(location.pathname=='/addcard'){
+    if(location.pathname==='/addcard'){
         return(
             <div className='container' style={{display:'flex',
             alignItems:'center',

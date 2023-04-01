@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IUser, LoginCred, RegisterCred, UpdateCred } from "./auth";
-import { ICard, IGym } from "./helpers";
+import { ICard, IGym, NewCardAdd } from "./helpers";
 
 const instance = axios.create({
     baseURL:'http://127.0.0.1:8080'
@@ -37,14 +37,19 @@ const getAllGyms =async ():Promise<IGym[]|null> => {
     return data;
 }
 
-const getGymById = async (gymId:string):Promise<IGym|null> =>{
+const getGymById = async (gymId:string|undefined):Promise<IGym|null> =>{
     const {data} = await instance.get(`/api/gyms/${gymId}`);
     return data as IGym;
 }
 
-const getCardById = async (cardId:string):Promise<ICard|null> =>{
+const getCardById = async (cardId:string|undefined):Promise<ICard|null> =>{
     const {data} = await instance.get(`/api/cards/${cardId}`);
     return data as ICard;
+}
+
+const addNewCard = async (card_data:NewCardAdd):Promise<string> =>{
+    const {data} = await instance.post(`/api/users/newcard`,{card_data});
+    return data as string;
 }
 
 export{
@@ -54,5 +59,6 @@ export{
     getUserById,
     getAllGyms,
     getGymById,
-    getCardById
+    getCardById,
+    addNewCard
 }

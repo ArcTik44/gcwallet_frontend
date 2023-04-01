@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
-import TextField from "@mui/material/TextField";
-import { Button, FormGroup } from "@mui/material";
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import { userSignIn } from "../../Services/api-services";
-import { UserContext } from "../../Services/UserContext";
-import { LoginCred } from "../../Services/auth";
+import { Button, FormGroup } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { userSignIn } from "../../Services/api-services";
+import { LoginCred } from "../../Services/auth";
+import { UserContext } from "../../Services/UserContext";
 
 const Login = () =>{
     const {userLogin} = useContext(UserContext);
@@ -15,7 +15,7 @@ const Login = () =>{
 
     const handleSubmit = async(evt:React.FormEvent<HTMLElement>) =>{
         evt.preventDefault();
-        const login ={
+        const login:LoginCred ={
             email: email.trim(),
             password: password
         };
@@ -25,6 +25,7 @@ const Login = () =>{
         if(res!=null){
             console.log(res);
             userLogin(res);
+            localStorage.setItem('user',JSON.stringify(res));
             navigate('/');
         }
         else{
