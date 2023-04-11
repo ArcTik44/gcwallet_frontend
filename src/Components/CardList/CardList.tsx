@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import { ICard} from "../../Services/helpers";
+import React from "react";
+import CardContainer from "./CardContainer";
 
 interface LayoutProps {
     cards:string[]|undefined;
 }
 
-const CardList:React.FC<LayoutProps> = () =>{
-    const[cards,setCards] = useState<ICard[]>([]);
+const CardList:React.FC<LayoutProps> = ({cards}) =>{
 
 
     return (<div style={{
@@ -14,7 +13,11 @@ const CardList:React.FC<LayoutProps> = () =>{
         borderRadius:11,
         overflow:'scroll'
     }}>
-
+        {
+            cards?.map((card)=>{
+                return <CardContainer card_id={card}/>
+            })
+        }
     </div>);
 }
 export default CardList;
