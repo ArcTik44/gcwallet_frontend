@@ -4,7 +4,7 @@ import { getCardById, getGymById } from '../../Services/api-services';
 import BarcodeImage from '../BarcodeImage/BarcodeImage';
 
 interface LayoutProps{
-    card_id: string|undefined;
+    card_id: string;
 }
 
 const CardContainer:React.FC<LayoutProps> = ({card_id}) => {
@@ -26,12 +26,12 @@ const CardContainer:React.FC<LayoutProps> = ({card_id}) => {
     })
 
     return (
-        <div>
+        <div className="border-black rounded-xl min-w-3xl pl-12 pr-12">
            <div>
             {gym?.name}
             </div> 
             <div>
-
+                {card?.subscription as unknown as string}
             </div>
             <div>
                 <BarcodeImage barcode={card?.barcode ? card.barcode : "111111"}/>

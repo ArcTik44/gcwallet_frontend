@@ -7,12 +7,7 @@ interface LayoutProps {
 
 const CardList:React.FC<LayoutProps> = ({cards}) =>{
 
-
-    return (<div style={{
-        backgroundColor:'#D9D9D9',
-        borderRadius:11,
-        overflow:'scroll'
-    }}>
+    return (<div className="min-w-150 min-h-150 overflow-y-scroll bg-gray-300 pt-50">
         {
             cards?.map((card)=>{
                 return <CardContainer card_id={card}/>

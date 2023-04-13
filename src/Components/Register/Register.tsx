@@ -62,67 +62,75 @@ const Register = () => {
 
   return (
     <FormGroup>
-      <div
-        className="logo-container"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+      <div className="flex justify-center items-center space-x-8 mt-4 mb-6">
+        <h1 className="text-4xl font-semibold">GCWallet</h1>
+        <div className="scale-150">
         <AccountBalanceWalletIcon />
+        </div>
       </div>
-      <div className="logo-text" style={{}}>
-        <h1 style={{ fontFamily: "sans-serif" }}>GCWallet</h1>
+
+      <div className="max-w-xl self-center mb-8">
+        <TextField
+          name="username"
+          variant="outlined"
+          helperText="This will be displayed on your page"
+          label="Username"
+          value={username}
+          onChange={handleChange}
+          type="text"
+        />
       </div>
-      <TextField
-        name="username"
-        variant="outlined"
-        helperText="This will be displayed on your page"
-        label="Username"
-        value={username}
-        onChange={handleChange}
-        type="text"
-      />
-      <TextField
-        onChange={handleChange}
-        name="email"
-        variant="outlined"
-        label="Email"
-        value={email}
-        type="email"
-      />
-      <TextField
-        onChange={handleChange}
-        name="password"
-        variant="outlined"
-        label="Password"
-        value={password}
-        type="password"
-      />
-      <TextField
-        onChange={handleChange}
-        name="confirmPassword"
-        variant="outlined"
-        label="Confirm password"
-        value={confirmPassword}
-        type="password"
-      />
-      <FormControlLabel
+
+      <div className="max-w-xl self-center mb-8">
+        <TextField
+          onChange={handleChange}
+          name="email"
+          variant="outlined"
+          label="Email"
+          value={email}
+          type="email"
+        />
+      </div>
+
+      <div className="max-w-xl self-center mb-8">
+        <TextField
+          onChange={handleChange}
+          name="password"
+          variant="outlined"
+          label="Password"
+          value={password}
+          type="password"
+        />
+      </div>
+
+      <div className="max-w-xl self-center mb-8">
+        <TextField
+          onChange={handleChange}
+          name="confirmPassword"
+          variant="outlined"
+          label="Confirm password"
+          value={confirmPassword}
+          type="password"
+        />
+      </div>
+
+      <div className="max-w-xl self-center mb-8">
+        <FormControlLabel
         control={
           <Checkbox name="tos" value={tosAccepted} onChange={handleChange} />
         }
         label="ToS GCWallet"
-      />
-      <Button onClick={createAccount}>Create account</Button>
-      <div
-        style={{
-          backgroundColor: "white",
-          cursor: "pointer",
-        }}
+        />
+      </div>
+
+      <div className="max-w-xl self-center">
+        <Button onClick={createAccount}>Create account</Button>
+      </div>
+
+      <div className="max-w-lg cursor-pointer rounded mt-4 self-center bg-slate-200"
         onClick={() => {
-          window.location.href = "/login";
-        }}
-      >
+          navigate("/login")
+        }}>
         Already have account?
       </div>
     </FormGroup>

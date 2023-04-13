@@ -4,10 +4,11 @@ import TextField from "@mui/material/TextField";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userSignIn } from "../../Services/api-services";
-import { LoginCred } from "../../Services/auth";
+import  {LoginCred}  from "../../Services/auth";
 import { UserContext } from "../../Services/UserContext";
 
 const Login = () =>{
+    
     const {userLogin} = useContext(UserContext);
     const navigate = useNavigate();
     const [email,setEmail] = useState('');
@@ -25,7 +26,7 @@ const Login = () =>{
         if(res!=null){
             console.log(res);
             userLogin(res);
-            localStorage.setItem('user',JSON.stringify(res));
+            window.sessionStorage.setItem("user",JSON.stringify(res));
             navigate('/');
         }
         else{
@@ -46,27 +47,28 @@ const Login = () =>{
     }
 
     return (
-        <>
-        <div className="login_page">
-        <div className="logo-container" style={{
-            display:'flex',
-            justifyContent:'center',
-        }}>
-        <AccountBalanceWalletIcon/>
+        <div>
+        <div className="flex justify-center content-center mt-4 mb-6 space-x-8 items-center">
+        <h1 className='text-4xl font-semibold'>GCWallet</h1>
+        <div className='scale-150'>
+            <AccountBalanceWalletIcon/>
+        </div>
         </div>
         
-        <h1 style={{fontFamily:'sans-serif'}}>GCWallet</h1>
         <FormGroup>
+            <div className='max-w-xl self-center mb-8'>
             <TextField name="email" label="Email" variant="outlined" onChange={handleChange} value={email} type="email"/>
+            </div>
+            <div className='max-w-xl self-center mb-8'>
             <TextField name="password" label="Password" variant="outlined" onChange={handleChange} value ={password} type='password'/>
+            </div>
+
+            <div className='max-w-xl self-center'>
             <Button className="login_button" onClick={handleSubmit}>Login</Button>
-            <div style={{
-                backgroundColor:'white',
-                cursor:'pointer'
-            }} onClick={()=>{window.location.href='/register'}}>No account yet?</div>
+            </div>
+            <div className='max-w-lg cursor-pointer rounded mt-4 self-center bg-slate-200' onClick={()=>{navigate("/register")}}>No account yet?</div>
         </FormGroup>
         </div>
-        </>
     );
 }
 export default Login;

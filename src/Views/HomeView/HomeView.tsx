@@ -1,9 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import CardList from "../../Components/CardList/CardList";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
-import { IUser } from "../../Services/auth";
 import { UserContext } from "../../Services/UserContext";
 
 const HomeView = () =>{
@@ -12,21 +11,14 @@ const HomeView = () =>{
 
     return(<>
     <div onClick={()=>{navigate('/user')}}>
-    <Header username={user?.username}/>
+        <Header username={user?.username}/>
     </div>
-    <div style={{
-        backgroundColor:'#D9D9D9',
-        borderRadius:11
-    }}>
-        <div style={{
-             backgroundColor:'#D9D9D9',
-             borderRadius:11,
-             borderColor:'#000',
-        }}><h1>My cards</h1></div>
-        <div>
+    <h1 className="flex justify-center text-4xl font-bold ml-8">My cards</h1>
+    <div className="flex min-w-2xl rounded-xl mt-5 border-gray-300 justify-center">
+        <div className="mt-15 self-center">
             <CardList cards={user?.cards}/>
         </div>
-        </div>
+    </div>
     <Footer/>
     </>)
 }

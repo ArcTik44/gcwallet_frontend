@@ -8,14 +8,18 @@ interface ContextProps{
     userLogout:()=>void;
 }
 
-
 export const UserContext = createContext<ContextProps>({} as ContextProps);
 
 export const UserContextProvider = (props: any) => {
     const [isLogged, setIsLogged] = useState(false);
-    const[user,setUser] = useState<IUser|null>(null);
+    const[user,setUser] = useState<IUser|null>(JSON.parse(window.sessionStorage.getItem("user")||"{}"));
 
     const userLogin = (data:IUser) => {
+        window.sessionStorage.setItem("user",JSON.stringify(data))
+        if(user === JSON.parse("{}")){
+            setIsLogged(false);
+        }
+        else
         setUser(data);
         setIsLogged(true);  
     }

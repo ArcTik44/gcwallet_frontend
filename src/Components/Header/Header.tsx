@@ -43,18 +43,10 @@ const Header:React.FC<LayoutProps> = ({username}) =>{
       }
 
     return(<>
-        <div
-        style={{
-            backgroundColor:'#D9D9D9',
-            borderRadius:12,
-            display:'flex',
-            alignItems:'center',
-            maxWidth:300,
-            alignContent:'center'
-        }}
-        className="container" onClick={()=>{navigate('/user')}}>
-            <div style={{display:'inline-block',paddingLeft:20}}><Avatar {...stringAvatar(username)}/></div>
-            <div style={{display:'inline-block',paddingLeft:50}}><h1>{username}</h1></div>
+        <div className="dark:bg-gray-300 rounded-xl flex items-center mt-2 mb-4 ml-10 content-center max-w-sm" 
+        onClick={()=>{navigate('/user')}}>
+            <div className="inline-block pl-12 mt-2 mb-2 cursor-pointer"><Avatar {...stringAvatar(username)}/></div>
+            <div className="inline-block pl-12 mt-2 mb-2 cursor-pointer font-bold text-3xl" ><h1>{username}</h1></div>
         </div>
     </>)
 }

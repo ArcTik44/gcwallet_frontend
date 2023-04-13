@@ -40,9 +40,10 @@ const UserSettings = () => {
   };
 
   return (
-    <>
+    <div>
       <Header username={user?.username} />
       <FormGroup>
+        <div className="max-w-xl self-center mt-10 mb-8">
         <TextField
           name="username"
           label="Username"
@@ -51,6 +52,9 @@ const UserSettings = () => {
           value={username}
           type="text"
         />
+        </div>
+
+        <div className="max-w-xl self-center mb-8">
         <TextField
           name="email"
           label="Email"
@@ -59,6 +63,9 @@ const UserSettings = () => {
           value={email}
           type="email"
         />
+        </div>
+
+        <div className="max-w-xl self-center mb-8">
         <TextField
           name="password"
           label="Password"
@@ -67,6 +74,9 @@ const UserSettings = () => {
           value={password}
           type="password"
         />
+        </div>
+
+        <div className="max-w-xl self-center mb-8">
         <TextField
           name="confirm_password"
           label="Confirm password"
@@ -75,10 +85,16 @@ const UserSettings = () => {
           value={confirmPassword}
           type="password"
         />
-        <Button onClick={updateDetails}>Confirm</Button>
+        </div>
+
+        <div className='max-w-xl self-center'>
+          <Button onClick={updateDetails}>Confirm</Button>
+        </div>
       </FormGroup>
-      <Footer />
-    </>
+      <div className="self-center">
+        <Footer />
+      </div>
+    </div>
   );
 };
 

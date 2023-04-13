@@ -42,13 +42,13 @@ const getGymById = async (gymId:string|undefined):Promise<IGym|null> =>{
     return data as IGym;
 }
 
-const getCardById = async (cardId:string|undefined):Promise<ICard|null> =>{
+const getCardById = async (cardId:string):Promise<ICard|null> =>{
     const {data} = await instance.get(`/api/cards/${cardId}`);
     return data as ICard;
 }
 
 const addNewCard = async (card_data:NewCardAdd):Promise<string> =>{
-    const {data} = await instance.post(`/api/users/newcard`,{card_data});
+    const {data} = await instance.post(`/api/users/newcard`,{...card_data});
     return data as string;
 }
 

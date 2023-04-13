@@ -1,4 +1,4 @@
-import { Button, FormControl, FormGroup, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
+import { Button, FormControl, FormGroup, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../Components/Footer/Footer";
 import { addNewCard, getAllGyms } from "../../Services/api-services";
@@ -16,6 +16,10 @@ const NewCardView = ()=>{
         switch(name){
             case "barcode":
                 setBarcodeId(value);
+                break;
+
+            case "gym_select":
+                setGymId(value);
                 break;
         }
     }
@@ -36,33 +40,42 @@ const NewCardView = ()=>{
     const addCard = async () =>{
         if(user!=null){
             const newCard:NewCardAdd = {
-                gym_id:gym_id,
                 barcode:barcode_id,
+                gym_id:gym_id,
                 user_id:user._id
             }
-            const res_inserted = await addNewCard(newCard);
+           await addNewCard(newCard);
         }        
     }
 
 return(
     <FormGroup>
-        <h1>Add Card</h1>
+        <h1 className="flex items-center text-4xl font-bold ml-8">Add Card</h1>
         <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Gym</InputLabel>
+    
+        <div className="self-center mb-8">
         <Select
+          sx={{ minWidth: 200 }}
+          fullWidth={true}
           name="gym_select"
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={gym_id}
-          label="Gym"
           onChange={handleChangeSelect}>
             {gyms?.map((gym)=>{
                 return(<MenuItem value={gym._id}>{gym.name}</MenuItem>)
             })}
         </Select>
-      </FormControl>
-        <TextField name="barcode" label="Barcode Text" variant="outlined" onChange={handleChange} value={barcode_id} type="text"/>
-        <Button onClick={addCard}>Add Card</Button>
+        </div>
+        </FormControl>
+        
+        <div className="max-w-xl self-center mb-8">
+            <TextField name="barcode" label="Barcode Text" variant="outlined" onChange={handleChange} value={barcode_id} type="text"/>
+        </div>
+
+        <div className="max-w-xl self-center">
+            <Button onClick={addCard}>Add Card</Button>
+        </div>
         <Footer/>
     </FormGroup>
 )
