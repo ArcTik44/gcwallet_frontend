@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import Barcode from "react-barcode";
 
 interface Props{
@@ -7,7 +8,7 @@ interface Props{
 const BarcodeImage:React.FC<Props> = ({barcode}) =>{
 
     return (<>
-<div>
+    <Box>
     <Barcode 
         lineColor="#000000"
         background="#D9D9D9"
@@ -15,7 +16,7 @@ const BarcodeImage:React.FC<Props> = ({barcode}) =>{
         height={(60)} 
         format="CODE128" 
         value={barcode}/>
-</div>
+    </Box>
     </>)
 };
 export default BarcodeImage;

@@ -1,12 +1,12 @@
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import {
   Box,
-    Button,
-    Checkbox,
-    FormControlLabel,
-    FormGroup,
-    TextField,
-    Typography
+  Button,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  TextField,
+  Typography,
 } from "@mui/material";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -64,26 +64,33 @@ const Register = () => {
 
   return (
     <FormGroup>
-      <Box sx={{
-        display:'flex',
-        justifyContent:'center',
-        alignItems:'center',
-        mt:'1rem',
-        mb:'1.5rem'
-      }} className="space-x-8">
-        <Typography variant='h3'>GCWallet</Typography>
-        <Box sx={{
-          scale:'150%'
-        }}>
-        <AccountBalanceWalletIcon />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          mt: "1rem",
+          mb: "1.5rem",
+        }}
+        className="space-x-8"
+      >
+        <Typography variant="h3">GCWallet</Typography>
+        <Box
+          sx={{
+            scale: "150%",
+          }}
+        >
+          <AccountBalanceWalletIcon />
         </Box>
       </Box>
 
-      <Box sx={{
-        maxWidth:'2rem',
-        alignSelf:'center',
-        mb:'2rem'
-      }}>
+      <Box
+        sx={{
+          maxWidth: "12rem",
+          alignSelf: "center",
+          mb: "2rem",
+        }}
+      >
         <TextField
           name="username"
           variant="outlined"
@@ -95,10 +102,13 @@ const Register = () => {
         />
       </Box>
 
-      <Box sx={{
-        maxWidth:'2rem',
-        alignSelf:'center',
-        mb:'2rem'}}>
+      <Box
+        sx={{
+          maxWidth: "12rem",
+          alignSelf: "center",
+          mb: "2rem",
+        }}
+      >
         <TextField
           onChange={handleChange}
           name="email"
@@ -109,11 +119,13 @@ const Register = () => {
         />
       </Box>
 
-      <Box sx={{
-        maxWidth:'2rem',
-        alignSelf:'center',
-        mb:'2rem'
-      }}>
+      <Box
+        sx={{
+          maxWidth: "12rem",
+          alignSelf: "center",
+          mb: "2rem",
+        }}
+      >
         <TextField
           onChange={handleChange}
           name="password"
@@ -124,11 +136,13 @@ const Register = () => {
         />
       </Box>
 
-      <Box sx={{
-        maxWidth:'2rem',
-        alignSelf:'center',
-        mb:'2rem'
-      }}>
+      <Box
+        sx={{
+          maxWidth: "12rem",
+          alignSelf: "center",
+          mb: "2rem",
+        }}
+      >
         <TextField
           onChange={handleChange}
           name="confirmPassword"
@@ -139,36 +153,43 @@ const Register = () => {
         />
       </Box>
 
-      <Box sx={{
-        maxWidth:'2rem',
-        alignSelf:'center',
-        mb:'2rem'
-      }}>
+      <Box
+        sx={{
+          maxWidth: "12rem",
+          alignSelf: "center",
+          mb: "2rem",
+        }}
+      >
         <FormControlLabel
-        control={
-          <Checkbox name="tos" value={tosAccepted} onChange={handleChange} />
-        }
-        label="ToS GCWallet"
+          control={
+            <Checkbox name="tos" value={tosAccepted} onChange={handleChange} />
+          }
+          label="ToS GCWallet"
         />
       </Box>
 
-      <Box sx={{
-        maxWidth:'2rem',
-        alignSelf:'center'
-      }}>
+      <Box
+        sx={{
+          maxWidth: "12rem",
+          alignSelf: "center",
+        }}
+      >
         <Button onClick={createAccount}>Create account</Button>
       </Box>
 
-      <Box sx={{
-        maxWidth:'32rem',
-        cursor:'pointer',
-        borderRadius:'12px',
-        alignSelf:'center',
-        backgroundColor:'#D9D9D9',
-        mt:'1rem'
-      }}  onClick={() => {
-          navigate("/login")
-        }}>
+      <Box
+        sx={{
+          maxWidth: "32rem",
+          cursor: "pointer",
+          borderRadius: "8px",
+          alignSelf: "center",
+          backgroundColor: "#D9D9D9",
+          mt: "1rem",
+        }}
+        onClick={() => {
+          navigate("/login");
+        }}
+      >
         Already have account?
       </Box>
     </FormGroup>

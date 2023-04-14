@@ -43,77 +43,89 @@ const UserSettings = () => {
     <Box>
       <Header username={user?.username} />
       <FormGroup>
-        <Box sx={{
-          maxWidth:'36rem',
-          alignSelf:'center',
-          mb:'2rem',
-          mt:'2.5rem'
-        }}>
-        <TextField
-          name="username"
-          label="Username"
-          variant="outlined"
-          onChange={handleChange}
-          value={username}
-          type="text"
-        />
+        <Box
+          sx={{
+            maxWidth: "36rem",
+            alignSelf: "center",
+            mb: "2rem",
+            mt: "2.5rem",
+          }}
+        >
+          <TextField
+            name="username"
+            label="Username"
+            variant="outlined"
+            onChange={handleChange}
+            value={username}
+            type="text"
+          />
         </Box>
 
-        <Box sx={{
-          maxWidth:'36rem',
-          alignSelf:'center',
-          mb:'2rem'
-        }}>
-        <TextField
-          name="email"
-          label="Email"
-          variant="outlined"
-          onChange={handleChange}
-          value={email}
-          type="email"
-        />
+        <Box
+          sx={{
+            maxWidth: "36rem",
+            alignSelf: "center",
+            mb: "2rem",
+          }}
+        >
+          <TextField
+            name="email"
+            label="Email"
+            variant="outlined"
+            onChange={handleChange}
+            value={email}
+            type="email"
+          />
         </Box>
 
-        <Box sx={{
-          maxWidth:'36rem',
-          alignSelf:'center',
-          mb:'2rem'
-        }}>
-        <TextField
-          name="password"
-          label="Password"
-          variant="outlined"
-          onChange={handleChange}
-          value={password}
-          type="password"
-        />
+        <Box
+          sx={{
+            maxWidth: "36rem",
+            alignSelf: "center",
+            mb: "2rem",
+          }}
+        >
+          <TextField
+            name="password"
+            label="Password"
+            variant="outlined"
+            onChange={handleChange}
+            value={password}
+            type="password"
+          />
         </Box>
 
-        <Box sx={{
-          maxWidth:'36rem',
-          alignSelf:'center',
-          mb:'2rem'
-        }}>
-        <TextField
-          name="confirm_password"
-          label="Confirm password"
-          variant="outlined"
-          onChange={handleChange}
-          value={confirmPassword}
-          type="password"
-        />
+        <Box
+          sx={{
+            maxWidth: "36rem",
+            alignSelf: "center",
+            mb: "2rem",
+          }}
+        >
+          <TextField
+            name="confirm_password"
+            label="Confirm password"
+            variant="outlined"
+            onChange={handleChange}
+            value={confirmPassword}
+            type="password"
+          />
         </Box>
 
-        <Box sx={{
-          maxWidth:'36rem',
-          alignSelf:'center'
-        }}>
+        <Box
+          sx={{
+            maxWidth: "36rem",
+            alignSelf: "center",
+          }}
+        >
           <Button onClick={updateDetails}>Confirm</Button>
         </Box>
       </FormGroup>
-      <Box sx={{
-        alignSelf:'center'
-      }}>
+      <Box
+        sx={{
+          alignSelf: "center",
+        }}
+      >
         <Footer />
       </Box>
     </Box>
