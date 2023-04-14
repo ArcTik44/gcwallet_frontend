@@ -1,4 +1,4 @@
-import { Button, FormControl, FormGroup, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
+import { Box, Button, FormControl, FormGroup, MenuItem, Select, SelectChangeEvent, TextField, Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../Components/Footer/Footer";
 import { addNewCard, getAllGyms } from "../../Services/api-services";
@@ -50,10 +50,21 @@ const NewCardView = ()=>{
 
 return(
     <FormGroup>
-        <h1 className="flex items-center text-4xl font-bold ml-8">Add Card</h1>
+        <Typography sx={{
+            display:'flex',
+            alignItems:'center',
+            fontSize:'2.25rem',
+            lineHeight:'2.5rem',
+            fontWeight:700,
+            ml:'2rem'
+        }}>Add Card</Typography>
         <FormControl fullWidth>
     
-        <div className="self-center mb-8">
+        <Box
+        sx={{
+            alignSelf:'center',
+            mb:'2rem'
+        }}>
         <Select
           sx={{ minWidth: 200 }}
           fullWidth={true}
@@ -66,16 +77,23 @@ return(
                 return(<MenuItem value={gym._id}>{gym.name}</MenuItem>)
             })}
         </Select>
-        </div>
+        </Box>
         </FormControl>
         
-        <div className="max-w-xl self-center mb-8">
+        <Box sx={{
+            maxWidth:'36rem',
+            alignSelf:'center',
+            mb:'2rem'
+        }}>
             <TextField name="barcode" label="Barcode Text" variant="outlined" onChange={handleChange} value={barcode_id} type="text"/>
-        </div>
+        </Box>
 
-        <div className="max-w-xl self-center">
+        <Box sx={{
+            maxWidth:'36rem',
+            alignSelf:'center'
+        }}>
             <Button onClick={addCard}>Add Card</Button>
-        </div>
+        </Box>
         <Footer/>
     </FormGroup>
 )

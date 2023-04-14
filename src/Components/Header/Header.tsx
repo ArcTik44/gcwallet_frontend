@@ -1,5 +1,5 @@
 import React from "react";
-import {Avatar} from '@mui/material'
+import {Avatar, Box, Typography} from '@mui/material'
 import { useNavigate } from "react-router-dom";
 
 interface LayoutProps {
@@ -43,11 +43,38 @@ const Header:React.FC<LayoutProps> = ({username}) =>{
       }
 
     return(<>
-        <div className="dark:bg-gray-300 rounded-xl flex items-center mt-2 mb-4 ml-10 content-center max-w-sm" 
-        onClick={()=>{navigate('/user')}}>
-            <div className="inline-block pl-12 mt-2 mb-2 cursor-pointer"><Avatar {...stringAvatar(username)}/></div>
-            <div className="inline-block pl-12 mt-2 mb-2 cursor-pointer font-bold text-3xl" ><h1>{username}</h1></div>
-        </div>
+        <Box sx={{
+          display:'flex',
+          maxWidth:'24rem',
+          alignItems:'center',
+          alignContent:'center',
+          backgroundColor:'#D9D9D9',
+          borderRadius:'12px',
+          mt:'0.5rem',
+          ml:'2.5rem',
+          mb:'1rem'
+        }} onClick={()=>{navigate('/user')}}>
+            <Box sx={{
+              displa:'inline-block',
+              cursor:'pointer',
+              pl:'3rem',
+              mb:'0.5rem',
+              mt:'0.5rem'
+            }}><Avatar {...stringAvatar(username)}/></Box>
+            <Box sx={{
+              diplay:'inline-block',
+              cursor:'pointer',
+              pl:'3rem',
+              mb:'0.5rem',
+              mt:'0.5rem'
+            }}>
+              <Typography sx={{
+                fontWeight:700,
+                fontSize:'1.875rem',
+                lineHeight:'2.25rem'
+              }}>{username}</Typography>
+            </Box>
+        </Box>
     </>)
 }
 export default Header;

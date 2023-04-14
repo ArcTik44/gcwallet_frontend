@@ -2,6 +2,7 @@ import { ICard, IGym } from '../../Services/helpers';
 import { useEffect, useState } from 'react';
 import { getCardById, getGymById } from '../../Services/api-services';
 import BarcodeImage from '../BarcodeImage/BarcodeImage';
+import { Box } from '@mui/material';
 
 interface LayoutProps{
     card_id: string;
@@ -26,17 +27,24 @@ const CardContainer:React.FC<LayoutProps> = ({card_id}) => {
     })
 
     return (
-        <div className="border-black rounded-xl min-w-3xl pl-12 pr-12">
-           <div>
+        <Box sx={{
+            borderColor:'#000000',
+            borderRadius:'0.75rem',
+            pl:'3rem',
+            pr:'3rem',
+            minWidth:'150px'
+
+        }}>
+           <Box>
             {gym?.name}
-            </div> 
-            <div>
+            </Box> 
+            <Box>
                 {card?.subscription as unknown as string}
-            </div>
-            <div>
+            </Box>
+            <Box>
                 <BarcodeImage barcode={card?.barcode ? card.barcode : "111111"}/>
-            </div>
-        </div>
+            </Box>
+        </Box>
     )
 }
 export default CardContainer;

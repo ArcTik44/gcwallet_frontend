@@ -7,6 +7,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Services/UserContext';
+import { Box } from '@mui/material';
 
 const Footer:React.FC = () =>{
 
@@ -16,41 +17,90 @@ const Footer:React.FC = () =>{
 
     if(location.pathname==='/addcard'){
         return(
-            <div className='flex self-center scale-200' onClick={()=>{navigate('/')}}><CancelIcon/></div>
+            <Box sx={{
+                display:'flex',
+                alignSelf:'center',
+                scale:'200%'
+            }} onClick={()=>{navigate('/')}}><CancelIcon/></Box>
             );
     }
     else return(
-        <div className="flex items-center justify-center space-x-12 mt-10 ">
-                <div className='border-black rounded-xl cursor-pointer bg-gray-300'>
-                    <div className='scale-150 p-4' onClick={() => { navigate("/"); } }>
+        <Box sx={{
+            display:'flex',
+            alignItems:'center',
+            justifyContent:'center',
+            mt:'2.5rem'
+        }} className="flex items-center justify-center space-x-12 mt-10 ">
+                <Box sx={{
+                    borderColor:'#000000',
+                    borderRadius:'0.75rem',
+                    cursor:'pointer',
+                    backgroundColor:'#D9D9D9'
+                }}>
+                    <Box sx={{
+                        scale:'150%',
+                        p:'1rem'
+                    }} onClick={() => { navigate("/"); } }>
                         <HomeIcon/>
-                    </div>
-                </div>
+                    </Box>
+                </Box>
 
-                <div className='border-black rounded-xl cursor-pointer bg-gray-300'>
-                    <div className='scale-150 p-4' onClick={() => { navigate("/"); } }>
+                <Box sx={{
+                    borderColor:'#000000',
+                    borderRadius:'0.75rem',
+                    cursor:'pointer',
+                    backgroundColor:'#D9D9D9'
+                }}>
+                    <Box sx={{
+                        scale:'150%',
+                        p:'1rem'
+                    }} onClick={() => { navigate("/"); } }>
                         <FitnessCenterIcon />
-                    </div>
-                </div>
+                    </Box>
+                </Box>
 
-                <div className='border-black rounded-xl cursor-pointer bg-gray-300'>
-                    <div className='scale-150 p-4' onClick={() => { navigate("/addcard"); } }>
+                <Box sx={{
+                    borderColor:'#000000',
+                    borderRadius:'0.75rem',
+                    cursor:'pointer',
+                    backgroundColor:'#D9D9D9'
+                }}>
+                    <Box sx={{
+                        scale:'150%',
+                        p:'1rem'
+                    }} onClick={() => { navigate("/addcard"); } }>
                         <AddCardIcon />
-                    </div>
-                </div>
+                    </Box>
+                </Box>
 
-                <div className='border-black rounded-xl cursor-pointer bg-gray-300'>
-                    <div className='scale-150 p-4' onClick={() => { navigate("/user"); } }>
+                <Box sx={{
+                    borderColor:'#000000',
+                    borderRadius:'0.75rem',
+                    cursor:'pointer',
+                    backgroundColor:'#D9D9D9'
+                }}>
+                    <Box sx={{
+                        scale:'150%',
+                        p:'1rem'
+                    }} onClick={() => { navigate("/user"); } }>
                         <SettingsIcon />
-                    </div>
-                </div>
+                    </Box>
+                </Box>
 
-                <div className='border-black rounded-xl cursor-pointer bg-gray-300'>
-                    <div className='scale-150 p-4' onClick={() => { userLogout() } }>
+                <Box sx={{
+                    borderColor:'#000000',
+                    borderRadius:'0.75rem',
+                    cursor:'pointer',
+                    backgroundColor:'#D9D9D9'
+                }}>
+                    <Box sx={{
+                        scale:'150%',
+                        p:'1rem'
+                    }} onClick={() => { userLogout() } }>
                         <AccountBoxIcon />
-                    </div>
-                </div>
-        </div>
+                    </Box>
+                </Box>
+        </Box>
     )
     
 }

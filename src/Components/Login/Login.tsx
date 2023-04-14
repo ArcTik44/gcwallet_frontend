@@ -1,5 +1,5 @@
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import { Button, FormGroup } from "@mui/material";
+import { Box, Button, FormGroup, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -47,28 +47,59 @@ const Login = () =>{
     }
 
     return (
-        <div>
-        <div className="flex justify-center content-center mt-4 mb-6 space-x-8 items-center">
-        <h1 className='text-4xl font-semibold'>GCWallet</h1>
-        <div className='scale-150'>
+        <Box>
+        <Box sx={{
+            display:'flex',
+            justifyContent:'center',
+            alignContent:'center',
+            alignItems:'center',
+            mt:'1rem',
+            mb:'1.5rem',
+
+        }} className="space-x-8">
+
+        <Typography variant='h3'>GCWallet</Typography>
+
+        <Box sx={{
+            scale:'150%'
+        }}>
             <AccountBalanceWalletIcon/>
-        </div>
-        </div>
+        </Box>
+        </Box>
         
         <FormGroup>
-            <div className='max-w-xl self-center mb-8'>
+            <Box sx={{
+                maxWidth:'36rem',
+                alignSelf:'center',
+                mb:'2rem'
+            }}>
             <TextField name="email" label="Email" variant="outlined" onChange={handleChange} value={email} type="email"/>
-            </div>
-            <div className='max-w-xl self-center mb-8'>
-            <TextField name="password" label="Password" variant="outlined" onChange={handleChange} value ={password} type='password'/>
-            </div>
+            </Box>
 
-            <div className='max-w-xl self-center'>
+            <Box sx={{
+                maxWidth:'36rem',
+                alignSelf:'center',
+                mb:'2rem'
+            }}>
+            <TextField name="password" label="Password" variant="outlined" onChange={handleChange} value ={password} type='password'/>
+            </Box>
+
+            <Box sx={{
+                maxWidth:'36rem',
+                alignSelf:'center'
+            }}>
             <Button className="login_button" onClick={handleSubmit}>Login</Button>
-            </div>
-            <div className='max-w-lg cursor-pointer rounded mt-4 self-center bg-slate-200' onClick={()=>{navigate("/register")}}>No account yet?</div>
+            </Box>
+
+            <Box sx={{
+                alignSelf:'center',
+                maxWidth:'32rem',
+                borderRadius:'12px',
+                backgroundColor:'#D9D9D9',
+                mt:'1rem'
+            }} onClick={()=>{navigate("/register")}}>No account yet?</Box>
         </FormGroup>
-        </div>
+        </Box>
     );
 }
 export default Login;

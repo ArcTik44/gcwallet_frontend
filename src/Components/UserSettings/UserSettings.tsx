@@ -1,4 +1,4 @@
-import { Button, FormGroup, TextField } from "@mui/material";
+import { Box, Button, FormGroup, TextField } from "@mui/material";
 import { useContext, useState } from "react";
 import { userUpdate } from "../../Services/api-services";
 import { UserContext } from "../../Services/UserContext";
@@ -40,10 +40,15 @@ const UserSettings = () => {
   };
 
   return (
-    <div>
+    <Box>
       <Header username={user?.username} />
       <FormGroup>
-        <div className="max-w-xl self-center mt-10 mb-8">
+        <Box sx={{
+          maxWidth:'36rem',
+          alignSelf:'center',
+          mb:'2rem',
+          mt:'2.5rem'
+        }}>
         <TextField
           name="username"
           label="Username"
@@ -52,9 +57,13 @@ const UserSettings = () => {
           value={username}
           type="text"
         />
-        </div>
+        </Box>
 
-        <div className="max-w-xl self-center mb-8">
+        <Box sx={{
+          maxWidth:'36rem',
+          alignSelf:'center',
+          mb:'2rem'
+        }}>
         <TextField
           name="email"
           label="Email"
@@ -63,9 +72,13 @@ const UserSettings = () => {
           value={email}
           type="email"
         />
-        </div>
+        </Box>
 
-        <div className="max-w-xl self-center mb-8">
+        <Box sx={{
+          maxWidth:'36rem',
+          alignSelf:'center',
+          mb:'2rem'
+        }}>
         <TextField
           name="password"
           label="Password"
@@ -74,9 +87,13 @@ const UserSettings = () => {
           value={password}
           type="password"
         />
-        </div>
+        </Box>
 
-        <div className="max-w-xl self-center mb-8">
+        <Box sx={{
+          maxWidth:'36rem',
+          alignSelf:'center',
+          mb:'2rem'
+        }}>
         <TextField
           name="confirm_password"
           label="Confirm password"
@@ -85,16 +102,21 @@ const UserSettings = () => {
           value={confirmPassword}
           type="password"
         />
-        </div>
+        </Box>
 
-        <div className='max-w-xl self-center'>
+        <Box sx={{
+          maxWidth:'36rem',
+          alignSelf:'center'
+        }}>
           <Button onClick={updateDetails}>Confirm</Button>
-        </div>
+        </Box>
       </FormGroup>
-      <div className="self-center">
+      <Box sx={{
+        alignSelf:'center'
+      }}>
         <Footer />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

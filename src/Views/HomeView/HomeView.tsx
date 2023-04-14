@@ -4,21 +4,44 @@ import CardList from "../../Components/CardList/CardList";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import { UserContext } from "../../Services/UserContext";
+import Box from "@mui/material/Box";
+import { Typography } from "@mui/material";
 
 const HomeView = () =>{
     const navigate = useNavigate();
     const {user} = useContext(UserContext);
 
     return(<>
-    <div onClick={()=>{navigate('/user')}}>
+    <Box onClick={()=>{navigate('/user')}}>
         <Header username={user?.username}/>
-    </div>
-    <h1 className="flex justify-center text-4xl font-bold ml-8">My cards</h1>
-    <div className="flex min-w-2xl rounded-xl mt-5 border-gray-300 justify-center">
-        <div className="mt-15 self-center">
+    </Box>
+    
+    <Typography sx={{
+        display:'flex',
+        justifyContent:'center',
+        fontSize:'2.25rem',
+        lineHeight:'2.5rem',
+        fontWeight:700,
+        ml:'2rem'
+    }}>My cards</Typography>
+
+    <Box sx={{
+        display:'flex',
+        alignSelf:'center',
+        justifyContent:'center',
+        maxWidth:'48rem',
+        borderRadius:'12px',
+        mt:'1.25rem',
+        backgroundColor:'#D9D9D9'
+    }}>
+        <Box sx={{
+            display:'flex',
+            alignSelf:'center',
+            mt:'3.5rem'
+        }}>
             <CardList cards={user?.cards}/>
-        </div>
-    </div>
+        </Box>
+    </Box>
     <Footer/>
     </>)
 }

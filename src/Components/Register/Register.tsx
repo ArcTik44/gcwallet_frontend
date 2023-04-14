@@ -1,10 +1,12 @@
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import {
+  Box,
     Button,
     Checkbox,
     FormControlLabel,
     FormGroup,
-    TextField
+    TextField,
+    Typography
 } from "@mui/material";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -62,14 +64,26 @@ const Register = () => {
 
   return (
     <FormGroup>
-      <div className="flex justify-center items-center space-x-8 mt-4 mb-6">
-        <h1 className="text-4xl font-semibold">GCWallet</h1>
-        <div className="scale-150">
+      <Box sx={{
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        mt:'1rem',
+        mb:'1.5rem'
+      }} className="space-x-8">
+        <Typography variant='h3'>GCWallet</Typography>
+        <Box sx={{
+          scale:'150%'
+        }}>
         <AccountBalanceWalletIcon />
-        </div>
-      </div>
+        </Box>
+      </Box>
 
-      <div className="max-w-xl self-center mb-8">
+      <Box sx={{
+        maxWidth:'2rem',
+        alignSelf:'center',
+        mb:'2rem'
+      }}>
         <TextField
           name="username"
           variant="outlined"
@@ -79,9 +93,12 @@ const Register = () => {
           onChange={handleChange}
           type="text"
         />
-      </div>
+      </Box>
 
-      <div className="max-w-xl self-center mb-8">
+      <Box sx={{
+        maxWidth:'2rem',
+        alignSelf:'center',
+        mb:'2rem'}}>
         <TextField
           onChange={handleChange}
           name="email"
@@ -90,9 +107,13 @@ const Register = () => {
           value={email}
           type="email"
         />
-      </div>
+      </Box>
 
-      <div className="max-w-xl self-center mb-8">
+      <Box sx={{
+        maxWidth:'2rem',
+        alignSelf:'center',
+        mb:'2rem'
+      }}>
         <TextField
           onChange={handleChange}
           name="password"
@@ -101,9 +122,13 @@ const Register = () => {
           value={password}
           type="password"
         />
-      </div>
+      </Box>
 
-      <div className="max-w-xl self-center mb-8">
+      <Box sx={{
+        maxWidth:'2rem',
+        alignSelf:'center',
+        mb:'2rem'
+      }}>
         <TextField
           onChange={handleChange}
           name="confirmPassword"
@@ -112,27 +137,40 @@ const Register = () => {
           value={confirmPassword}
           type="password"
         />
-      </div>
+      </Box>
 
-      <div className="max-w-xl self-center mb-8">
+      <Box sx={{
+        maxWidth:'2rem',
+        alignSelf:'center',
+        mb:'2rem'
+      }}>
         <FormControlLabel
         control={
           <Checkbox name="tos" value={tosAccepted} onChange={handleChange} />
         }
         label="ToS GCWallet"
         />
-      </div>
+      </Box>
 
-      <div className="max-w-xl self-center">
+      <Box sx={{
+        maxWidth:'2rem',
+        alignSelf:'center'
+      }}>
         <Button onClick={createAccount}>Create account</Button>
-      </div>
+      </Box>
 
-      <div className="max-w-lg cursor-pointer rounded mt-4 self-center bg-slate-200"
-        onClick={() => {
+      <Box sx={{
+        maxWidth:'32rem',
+        cursor:'pointer',
+        borderRadius:'12px',
+        alignSelf:'center',
+        backgroundColor:'#D9D9D9',
+        mt:'1rem'
+      }}  onClick={() => {
           navigate("/login")
         }}>
         Already have account?
-      </div>
+      </Box>
     </FormGroup>
   );
 };
