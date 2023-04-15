@@ -4,13 +4,13 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import HomeIcon from "@mui/icons-material/Home";
 import SettingsIcon from "@mui/icons-material/Settings";
-import React, { useContext } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { UserContext } from "../../Services/UserContext";
 import { Box } from "@mui/material";
+import { useLocalStorage, useReadLocalStorage } from "usehooks-ts";
 
 const Footer: React.FC = () => {
-  const { userLogout } = useContext(UserContext);
+  const [isLogged,setIsLogged] = useLocalStorage('isLogged',useReadLocalStorage('isLogged'));
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -19,6 +19,7 @@ const Footer: React.FC = () => {
       <Box
         sx={{
           display: "flex",
+          mt:'1.5rem',
           alignSelf: "center",
           scale: "200%",
         }}
@@ -38,7 +39,7 @@ const Footer: React.FC = () => {
           justifyContent: "center",
           mt: "2.5rem",
         }}
-        className="space-x-12"
+        className="space-x-4"
       >
         <Box
           sx={{
@@ -143,7 +144,7 @@ const Footer: React.FC = () => {
               p: "1rem",
             }}
             onClick={() => {
-              userLogout();
+              setIsLogged(false); 
             }}
           >
             <AccountBoxIcon />

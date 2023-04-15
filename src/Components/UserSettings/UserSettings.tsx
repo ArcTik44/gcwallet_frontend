@@ -1,23 +1,20 @@
 import { Box, Button, FormGroup, TextField } from "@mui/material";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { userUpdate } from "../../Services/api-services";
-import { UserContext } from "../../Services/UserContext";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import { useReadLocalStorage } from "usehooks-ts";
+import { IUser } from "../../Services/auth";
 
 const UserSettings = () => {
-  const { user } = useContext(UserContext);
-  const [username, setUsername] = useState<string | null>(null);
-  const [email, setEmail] = useState<string | null>(null);
+  const user = useReadLocalStorage<IUser|undefined>('user');
+  const [username, setUsername] = useState<string | undefined>(user?.username);
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = evt.target;
     switch (name) {
-      case "email":
-        setEmail(value);
-        break;
       case "password":
         setPassword(value);
         break;
@@ -31,12 +28,13 @@ const UserSettings = () => {
   };
 
   const updateDetails = async () => {
-    const updated = {
-      username: null,
-      email: null,
-      password: null,
-    };
-    userUpdate(updated);
+    if(password===confirmPassword){
+      const updated = {
+        username: null,
+        password: null,
+      };
+      userUpdate(updated);
+    }
   };
 
   return (
@@ -73,7 +71,8 @@ const UserSettings = () => {
             label="Email"
             variant="outlined"
             onChange={handleChange}
-            value={email}
+            disabled
+            value={user?.email}
             type="email"
           />
         </Box>

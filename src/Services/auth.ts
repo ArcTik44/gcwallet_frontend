@@ -19,6 +19,5 @@ export interface RegisterCred {
 
 export interface UpdateCred {
   username: string | null;
-  email: string | null;
   password: string | null;
 }

@@ -52,7 +52,7 @@ const Header: React.FC<LayoutProps> = ({ username }) => {
           backgroundColor: "#D9D9D9",
           borderRadius: "12px",
           mt: "0.5rem",
-          ml: "2.5rem",
+          ml:'1rem',
           mb: "1rem",
         }}
         onClick={() => {

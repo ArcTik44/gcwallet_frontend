@@ -4,11 +4,14 @@ import TextField from "@mui/material/TextField";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userSignIn } from "../../Services/api-services";
-import { LoginCred } from "../../Services/auth";
+import { IUser, LoginCred } from "../../Services/auth";
 import { UserContext } from "../../Services/UserContext";
+import { useLocalStorage } from "usehooks-ts";
 
 const Login = () => {
-  const { userLogin } = useContext(UserContext);
+  const [user,setUser] = useLocalStorage<IUser|undefined>("user",undefined);
+  const [isLogged,setIsLogged] = useLocalStorage<boolean>("isLogged",false);
+
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,9 +26,8 @@ const Login = () => {
     let res = await userSignIn(login);
 
     if (res != null) {
-      console.log(res);
-      userLogin(res);
-      window.sessionStorage.setItem("user", JSON.stringify(res));
+      setUser(res);
+      setIsLogged(true);
       navigate("/");
     } else {
       console.log(666);

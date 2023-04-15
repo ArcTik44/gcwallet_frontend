@@ -1,15 +1,16 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import CardList from "../../Components/CardList/CardList";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
-import { UserContext } from "../../Services/UserContext";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
+import { IUser } from "../../Services/auth";
+import { useReadLocalStorage } from "usehooks-ts";
+import { isEmptyArray } from "../../Services/validations";
 
 const HomeView = () => {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const user  = useReadLocalStorage<IUser|undefined>('user');
 
   return (
     <>
@@ -51,7 +52,15 @@ const HomeView = () => {
             mt: "3.5rem",
           }}
         >
-          <CardList cards={user?.cards} />
+          {
+            isEmptyArray(user?.cards) ? <Typography sx={{
+              justifyContent: "center",
+              fontSize: "2.25rem",
+              lineHeight: "2.5rem",
+              fontWeight: 700,
+            }}>No cards yet</Typography> : <CardList cards={user?.cards} />
+          }
+          
         </Box>
       </Box>
       <Footer />

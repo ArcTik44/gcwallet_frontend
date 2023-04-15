@@ -8,14 +8,17 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userSingUp } from "../../Services/api-services";
-import { UserContext } from "../../Services/UserContext";
+import { useLocalStorage } from "usehooks-ts";
+import { IUser } from "../../Services/auth";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { userLogin } = useContext(UserContext);
+  const [user,setUser] = useLocalStorage<IUser|undefined>('user',undefined);
+  const [isLogged,setIsLogged] = useLocalStorage<boolean>('isLogged',false);
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -53,8 +56,8 @@ const Register = () => {
       });
 
       if (res != null) {
-        userLogin(res);
-        console.log(res);
+        setUser(res);
+        setIsLogged(true);
         navigate("/");
       } else {
         console.log(res);

@@ -15,8 +15,7 @@ instance.defaults.headers.put["Accept"] = "application/json";
 const userSignIn = async (user: LoginCred): Promise<IUser | null> => {
   const { data } = await instance.post(
     `/api/users/signin`,
-    { ...user },
-    { timeout: 10000 }
+    { ...user }
   );
   return data as IUser;
 };

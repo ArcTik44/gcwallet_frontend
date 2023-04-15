@@ -77,6 +77,7 @@ const NewCardView = () => {
           sx={{
             alignSelf: "center",
             mb: "2rem",
+            mt:'2rem'
           }}
         >
           <Select
