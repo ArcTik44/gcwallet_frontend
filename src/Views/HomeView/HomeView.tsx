@@ -5,12 +5,14 @@ import Header from "../../Components/Header/Header";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import { IUser } from "../../Services/auth";
-import { useReadLocalStorage } from "usehooks-ts";
+import { useLocalStorage, useReadLocalStorage } from "usehooks-ts";
 import { isEmptyArray } from "../../Services/validations";
+import { useEffect } from "react";
+import { getUserById } from "../../Services/api-services";
 
 const HomeView = () => {
   const navigate = useNavigate();
-  const user  = useReadLocalStorage<IUser|undefined>('user');
+  const user  = useReadLocalStorage<IUser>('user');
 
   return (
     <>
@@ -39,9 +41,11 @@ const HomeView = () => {
         sx={{
           display: "flex",
           justifyContent: "center",
-          maxWidth: "48rem",
+          alignContent:'center',
+          maxWidth: "46rem",
           borderRadius: "12px",
           mt: "1.25rem",
+          minHeight:'18rem',
           backgroundColor: "#D9D9D9",
         }}
       >
@@ -49,6 +53,7 @@ const HomeView = () => {
           sx={{
             display: "flex",
             alignSelf: "center",
+            justifyContent:'center',
             mt: "3.5rem",
           }}
         >
@@ -63,7 +68,11 @@ const HomeView = () => {
           
         </Box>
       </Box>
-      <Footer />
+      <Box sx={{
+        mt:'8rem'
+      }}>
+        <Footer />
+      </Box>
     </>
   );
 };

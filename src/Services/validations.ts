@@ -1,4 +1,4 @@
-const isEmptyArray =(arr:string[]|undefined)=>{
+const isEmptyArray =(arr:any[]|undefined)=>{
     if(arr===undefined||arr===null||arr.length===0){
         return true;
     }

@@ -10,11 +10,12 @@ const CardList: React.FC<LayoutProps> = ({ cards }) => {
   return (
     <Box
       sx={{
-        minWidth: "fill",
-        minHeight: "50px",
-        maxHeight: "8rem",
+        minWidth: "45rem",
+        minHeight: "18rem",
         overflowY: "scroll",
-        backgroundColor: "#D9D9D9",
+        alignSelf:'center',
+        alignItems:'center',
+        pl:'14rem'
       }}
     >
       {cards?.map((card) => {

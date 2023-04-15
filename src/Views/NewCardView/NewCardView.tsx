@@ -9,14 +9,17 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../Components/Footer/Footer";
 import { addNewCard, getAllGyms } from "../../Services/api-services";
 import { IGym, NewCardAdd } from "../../Services/helpers";
-import { UserContext } from "../../Services/UserContext";
+import { useNavigate } from "react-router-dom";
+import { useReadLocalStorage } from "usehooks-ts";
+import { IUser } from "../../Services/auth";
 
 const NewCardView = () => {
-  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+  const user = useReadLocalStorage<IUser>('user');
   const [barcode_id, setBarcodeId] = useState<string>("");
   const [gym_id, setGymId] = useState<string>("");
   const [gyms, setGyms] = useState<IGym[] | null>([]);
@@ -55,6 +58,7 @@ const NewCardView = () => {
         user_id: user._id,
       };
       await addNewCard(newCard);
+      navigate('/');
     }
   };
 

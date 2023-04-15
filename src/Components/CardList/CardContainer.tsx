@@ -28,18 +28,16 @@ const CardContainer: React.FC<LayoutProps> = ({ card_id }) => {
   return (
     <Box
       sx={{
+        display:'flex',
+        borderWidth:'0.125rem',
         borderColor: "#000000",
         borderRadius: "0.75rem",
-        pl: "3rem",
-        pr: "3rem",
-        minWidth: "150px",
+        maxWidth: "16rem",
+        justifyContent: "center",
+        alignItems:'center'
       }}
     >
-      <Box
-        sx={{
-          justifyContent: "center",
-        }}
-      >
+      <Box>
         {gym?.name}
       </Box>
       <Box>{card?.subscription as unknown as string}</Box>

@@ -1,11 +1,10 @@
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import { Box, Button, FormGroup, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userSignIn } from "../../Services/api-services";
 import { IUser, LoginCred } from "../../Services/auth";
-import { UserContext } from "../../Services/UserContext";
 import { useLocalStorage } from "usehooks-ts";
 
 const Login = () => {
